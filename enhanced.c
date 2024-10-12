@@ -32,6 +32,7 @@ int main(int argc, char *argv[]) {
 
     while ((packet = pcap_next(handle, &header)) != NULL) {
         struct ip* ip_header = (struct ip*)(packet + sizeof(struct ether_header));
+        //destination ip address
         unsigned char* ip_addr = (unsigned char*)&ip_header->ip_dst;
         //increase the value at the corresponding indice of octet_counts by 1 
         octet_counts[ip_addr[3]]=octet_counts[ip_addr[3]]+1;
